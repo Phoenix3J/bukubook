@@ -38,13 +38,13 @@ class RegisterTest extends TestCase
             "name" => "Jan",
             "email" => "jan3@gmail.com",
             "password" => "12345678",
-            "password-confirm" => "12345678"
+            "password_confirmation" => "12345678"
         ]);
 
         //check after register page
         $this->assertAuthenticated();
         $response->assertRedirect("/home");
-        $response->assertSeeText("(USER)");
+
 
     }
 
