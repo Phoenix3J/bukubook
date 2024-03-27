@@ -42,7 +42,7 @@ class RegisterTest extends TestCase
         ]);
 
         //check after register page
-
+        $this->assertAuthenticated();
         $response->assertRedirect("/home");
         $response->assertSeeText("(USER)");
 
