@@ -27,7 +27,7 @@ jobs :
               run: ./vendor/bin/phpstan --error-format=github
 
             - name: Create env
-              run: php -r "file_exists('.env')|| copy('.env.example', '.env')"
+              run: php -r "file_exists('.env')|| copy('.env.example', '.env');"
 
             - name : Generate env key
               run : php artisan key:generate
