@@ -52,7 +52,7 @@ jobs :
             - name: install front-end
               run : |
                 npm install
-                npm run dev
+                npm run build
 
             - name: Feature Test
               env:
