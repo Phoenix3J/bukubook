@@ -49,15 +49,12 @@ jobs :
             - name: Migrate
               run: php artisan migrate --seed
 
-            - name: install front-end
+            - name: Install Front-end
               run : |
                 npm install
                 npm run build
 
             - name: Feature Test
-              env:
-                DB_CONNECTION: Sqlite
-                DB_DATABASE: database/database.sqlite
               run: php artisan test
 
 
