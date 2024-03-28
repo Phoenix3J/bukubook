@@ -13,7 +13,7 @@ jobs :
                     MYSQL_ROOT_PASSWORD: password
                     MYSQL_DATABASE: bukubook
                 ports:
-                    - 33306:3306
+                    - 3306:3306
 
         steps:
             - uses: actions/checkout@v3
@@ -36,7 +36,7 @@ jobs :
               run: ./vendor/bin/phpstan --error-format=github
 
             - name: Create env
-              run: php -r "file_exists('.env')|| copy('.env.example', '.env.ci');"
+              run: php -r "file_exists('.env')|| copy('.env.ci','.env');"
 
             - name : Generate env key
               run : php artisan key:generate
@@ -48,6 +48,11 @@ jobs :
 
             - name: Migrate
               run: php artisan migrate --seed
+
+            - name: install front-end
+              run : |
+                npm install
+                npm run dev
 
             - name: Feature Test
               env:
